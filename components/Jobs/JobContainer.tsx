@@ -1,9 +1,25 @@
 import React from "react";
-import NavBar from "../NavBar";
 import JobFilters from "./JobFilters";
 import JobInterface from "./JobInterface";
 import JobScroller from "./JobScroller";
 import JobSideBar from "./JobSideBar";
+import JobsNav from "./JobsNav";
+
+function JobContainer() {
+  return (
+    <div className="flex justify-center">
+      <JobSideBar />
+      <div className="flex flex-col bg-gray-400 max-w-5xl">
+        <JobsNav />
+        <JobFilters savedFilters={[]} />
+        <JobScroller jobs={jobs} />
+      </div>
+    </div>
+  );
+}
+
+export default JobContainer;
+
 const jobs: Array<JobInterface> = [
   {
     id: 12,
@@ -161,18 +177,3 @@ const jobs: Array<JobInterface> = [
     employerReview: 30,
   },
 ];
-
-function JobContainer() {
-  return (
-    <div>
-      <NavBar />
-      <JobSideBar />
-      <div className="flex">
-        <JobFilters />
-        <JobScroller jobs={jobs} />
-      </div>
-    </div>
-  );
-}
-
-export default JobContainer;
