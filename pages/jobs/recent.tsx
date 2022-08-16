@@ -1,7 +1,8 @@
 import React from "react";
+import JobContainer from "../../components/Jobs/JobContainer";
 
 function recent() {
-  return <div>recent</div>;
+  return <JobContainer />;
 }
 
 export default recent;

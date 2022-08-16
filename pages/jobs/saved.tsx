@@ -1,7 +1,8 @@
 import React from "react";
+import JobContainer from "../../components/Jobs/JobContainer";
 
 function saved() {
-  return <div>saved</div>;
+  return <JobContainer />;
 }
 
 export default saved;
