@@ -1,19 +1,23 @@
 import React, { useState } from "react";
+import JobInterface from "../../Jobs/JobInterface";
 import CreateJob from "./CreateJob";
 
 function CreateJobContainer() {
-  const [title, setTitle] = useState("");
-  const [location, setLocation] = useState("");
+  const [job, setJob] = useState<JobInterface>({
+    id: 0,
+    title: "",
+    location: "",
+    employerName: "",
+    description: "",
+    skills: [],
+    budget: 0,
+    hoursPerWeek: 0,
+    timePosted: 0,
+    noProposals: 0,
+    employerReview: 1,
+  });
 
-  // employerName: string;
-  // description: string;
-  // skills: Array<string>;
-  // budget: number;
-  // hoursPerWeek: number;
-  // timePosted: number;
-  // noProposals: number;
-  // employerReview: number;
-  return <CreateJob {...{ title, setTitle }} />;
+  return <CreateJob {...{ job, setJob }} />;
 }
 
 export default CreateJobContainer;
