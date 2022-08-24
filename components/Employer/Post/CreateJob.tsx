@@ -4,6 +4,21 @@ import ObjectNumberInput from "../../Inputs/ObjectNumberInput";
 import ObjectTextInput from "../../Inputs/ObjectTextInput";
 import JobInterface from "../../Jobs/JobInterface";
 
+// "Melbourne",
+//   "Regional Victoria",
+//   "Sydney",
+//   "Regional New South Wales",
+//   "Brisbane",
+//   "Regional Queensland",
+//   "Canberra",
+//   "Regional ACT",
+//   "Adelaide",
+//   "Regional South Australia",
+//   "Perth",
+//   "Regional Western Australia",
+//   "Darwin",
+//   "Regional Northern Territory";
+
 const CreateJob: FC<{
   job: JobInterface;
   setJob: Dispatch<SetStateAction<object>>;
