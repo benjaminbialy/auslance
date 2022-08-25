@@ -1,10 +1,8 @@
-import React, { Dispatch, FC, SetStateAction } from "react";
+import React, { FC, useState } from "react";
+import { Auth } from "./Auth";
 
-interface Props {
-  value: string;
-  setValue: Dispatch<SetStateAction<string>>;
-}
+export const AuthContainer: FC = () => {
+  const [loading, setLoading] = useState(false);
 
-export const AuthContainer: FC<Props> = ({ value, setValue }) => {
-  return <div>AuthContainer</div>;
+  return <Auth {...{ loading }} />;
 };

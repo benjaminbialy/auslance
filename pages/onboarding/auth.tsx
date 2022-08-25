@@ -1,5 +1,6 @@
 import React, { FC } from "react";
+import { AuthContainer } from "../../components/Onboarding/Auth/AuthContainer";
 
 export const auth: FC = () => {
-  return <div>auth Page</div>;
+  return <AuthContainer />;
 };

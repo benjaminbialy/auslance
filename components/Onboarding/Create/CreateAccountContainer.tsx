@@ -1,7 +1,8 @@
 import React, { FC, useState } from "react";
+import { CreateAccount } from "./CreateAccount";
 
 export const CreateAccountContainer: FC = () => {
-  const [count, setCount] = useState(0);
+  const [loading, setLoading] = useState(false);
 
-  return <div>CreateAccountContainer</div>;
+  return <CreateAccount {...{ loading }} />;
 };

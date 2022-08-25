@@ -1,9 +1,9 @@
 import React, { FC } from "react";
 
 interface Props {
-  text: string;
+  loading: boolean;
 }
 
-export const UserSignUp: FC<Props> = ({ text }) => {
+export const UserSignUp: FC<Props> = ({ loading }) => {
   return <div>UserSignUp</div>;
 };

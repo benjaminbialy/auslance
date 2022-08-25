@@ -1,7 +1,8 @@
 import React, { FC, useState } from "react";
+import { UserSignUp } from "./UserSignUp";
 
 export const UserSignUpContainer: FC = () => {
-  const [count, setCount] = useState(0);
+  const [loading, setLoading] = useState(false);
 
-  return <div>UserSignUpContainer</div>;
+  return <UserSignUp {...{ loading }} />;
 };
