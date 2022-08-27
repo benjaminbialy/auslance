@@ -1,8 +1,8 @@
 import React, { FC } from "react";
-import { UserSignUpContainer } from "../../components/Onboarding/User/UserSignUpContainer";
+import { UserOnboardingContainer } from "../../components/Onboarding/User/UserOnboardingContainer";
 
 const user: FC = () => {
-  return <UserSignUpContainer />;
+  return <UserOnboardingContainer />;
 };
 
 export default user;
