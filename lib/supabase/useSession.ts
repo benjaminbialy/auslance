@@ -22,11 +22,14 @@ export const useSession = () => {
 
     getInitialSession();
 
-    supabase.auth.onAuthStateChange((_event, session) => {
+    supabase.auth.onAuthStateChange(async (_event, session) => {
       setSession(session);
-      axios.post("/api/setAuthCookie", { event: _event, session: session });
+      await axios.post("/api/setAuthCookie", {
+        event: _event,
+        session: session,
+      });
     });
-  });
+  }, []);
 
   return { session, loading };
 };

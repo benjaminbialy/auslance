@@ -1,5 +1,12 @@
 import { Input } from "@mui/material";
-import React, { Dispatch, FC, FormEvent, SetStateAction } from "react";
+import React, {
+  Dispatch,
+  FC,
+  FormEvent,
+  SetStateAction,
+  useContext,
+} from "react";
+import { AuthContext } from "../../../globals/Auth";
 import { supabase } from "../../../lib/supabase/supabaseClient";
 
 interface Props {
