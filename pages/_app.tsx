@@ -42,7 +42,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         value={{
           authenticated: session ? true : false,
           isOnboarded: userData.isOnboarded,
-          name: userData.first_name + " " + userData.last_name,
+          name:
+            (userData.first_name == null ? "" : userData.first_name) +
+            " " +
+            (userData.last_name == null ? "" : userData.last_name),
         }}
       >
         <NavBar />

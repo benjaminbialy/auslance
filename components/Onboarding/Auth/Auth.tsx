@@ -1,13 +1,5 @@
 import { Input } from "@mui/material";
-import React, {
-  Dispatch,
-  FC,
-  FormEvent,
-  SetStateAction,
-  useContext,
-} from "react";
-import { AuthContext } from "../../../globals/Auth";
-import { supabase } from "../../../lib/supabase/supabaseClient";
+import React, { Dispatch, FC, FormEvent, SetStateAction } from "react";
 
 interface Props {
   error: boolean;
@@ -33,6 +25,7 @@ export const Auth: FC<Props> = ({
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           type="email"
+          disabled={loading}
         />
         <button disabled={loading} type="submit">
           {loading ? "Signing up..." : "Sign up"}

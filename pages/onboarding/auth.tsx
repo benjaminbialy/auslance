@@ -8,6 +8,8 @@ export async function getServerSideProps({ req }) {
   if (user) {
     return { props: {}, redirect: { destination: "user" } };
   }
+
+  return { props: { user: user } };
 }
 
 const auth: FC = () => {

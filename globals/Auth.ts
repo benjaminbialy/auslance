@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, Dispatch, SetStateAction } from "react";
 
 interface AuthContext {
   authenticated: boolean;
@@ -6,6 +6,7 @@ interface AuthContext {
   employerID?: number;
   isOnboarded: boolean;
   name: string;
+  setName?: Dispatch<SetStateAction<string>>;
 }
 
 const defaultAuthContext: AuthContext = {
