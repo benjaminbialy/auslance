@@ -1,41 +1,58 @@
-import { Input } from "@mui/material";
-import React, { Dispatch, FC, FormEvent, SetStateAction } from "react";
+import React, { Dispatch, FC, SetStateAction } from "react";
+import { UserData } from "../../../lib/supabase/getUserData";
+import { supabase } from "../../../lib/supabase/supabaseClient";
+import { useDatabase } from "../../../lib/supabase/useDatabase";
+import SimpleTextInput from "../../Inputs/SimpleTextInput";
 
 interface Props {
-  error: boolean;
-  loading: boolean;
   firstName: string;
   setFirstName: Dispatch<SetStateAction<string>>;
   lastName: string;
   setLastName: Dispatch<SetStateAction<string>>;
-  onSubmit: (e: FormEvent<HTMLFormElement>) => Promise<void>;
+  setUserData: Dispatch<SetStateAction<UserData>>;
 }
 
 export const UserOnboarding: FC<Props> = ({
-  loading,
-  error,
   firstName,
   setFirstName,
   lastName,
   setLastName,
-  onSubmit,
+  setUserData,
 }) => {
+  const { loading, error, success, update } = useDatabase();
+  const user = supabase.auth.user();
   return (
     <div>
-      <form onSubmit={(e) => onSubmit(e)}>
-        <Input
+      <form
+        onSubmit={async (e) => {
+          e.preventDefault();
+          const success = await update(
+            "users",
+            { first_name: firstName.trim(), last_name: lastName.trim() },
+            user.id
+          );
+          if (success) {
+            setUserData((prev) => ({
+              ...prev,
+              first_name: firstName.trim(),
+              last_name: lastName.trim(),
+            }));
+          }
+        }}
+      >
+        <SimpleTextInput
           placeholder="Your first name"
-          required
           value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
+          setValue={setFirstName}
           disabled={loading}
+          required={true}
         />
-        <Input
+        <SimpleTextInput
           placeholder="Your last name"
-          required
           value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
+          setValue={setLastName}
           disabled={loading}
+          required={true}
         />
         <button disabled={loading} type="submit">
           {loading ? "Saving name..." : "Save"}

@@ -1,4 +1,3 @@
-import { PostgrestError } from "@supabase/supabase-js";
 import { supabase } from "./supabaseClient";
 
 export interface UserData {
