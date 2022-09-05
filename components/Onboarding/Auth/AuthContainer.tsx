@@ -1,5 +1,4 @@
-import React, { FC, FormEvent, useState } from "react";
-import { supabase } from "../../../lib/supabase/supabaseClient";
+import React, { FC, useState } from "react";
 import { Auth } from "./Auth";
 
 export const AuthContainer: FC = () => {
