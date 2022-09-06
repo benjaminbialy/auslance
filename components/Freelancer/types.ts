@@ -1,0 +1,28 @@
+export enum ExpertiseLevel {
+  beginner = "beginner",
+  intermediate = "intermediate",
+  expert = "expert",
+}
+
+export type Area = "sales" | "engineering" | "marketing" | "design";
+export enum Visibility {
+  private = "private",
+  public = "public",
+}
+
+export interface Freelancer {
+  hourlyRate: number;
+  bio: string;
+  headline: string;
+  location: string;
+  timezone: string;
+  linkedIn?: string;
+  gitHub?: string;
+  yearsOfExperience: number;
+  expertiseLevel: ExpertiseLevel;
+  skills: string[];
+  areaOfWork: Area;
+  visibility: Visibility;
+  timeAvailable: number;
+  website?: string;
+}
