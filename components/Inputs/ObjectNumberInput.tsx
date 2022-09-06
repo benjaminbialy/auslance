@@ -1,6 +1,20 @@
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, Dispatch, FC, SetStateAction } from "react";
 
-function ObjectNumberInput({
+interface Props {
+  loading: boolean;
+  required: boolean;
+  placeholder: string;
+  field: string;
+  value: Object;
+  setValue: Dispatch<SetStateAction<Object>>;
+  min: number;
+  max?: number;
+  step?: number;
+}
+
+export const ObjectNumberInput: FC<Props> = ({
+  loading,
+  required = false,
   value,
   setValue,
   placeholder,
@@ -8,7 +22,7 @@ function ObjectNumberInput({
   min = 0,
   max = null,
   step = 1,
-}) {
+}) => {
   return (
     <input
       type={"number"}
@@ -16,12 +30,12 @@ function ObjectNumberInput({
       value={value[field]}
       min={min}
       max={max}
-      step={1}
+      step={step}
+      required={required}
+      disabled={loading}
       onChange={(e: ChangeEvent<HTMLInputElement>) =>
         setValue((prev) => ({ ...prev, [field]: e.target.value }))
       }
     />
   );
-}
-
-export default ObjectNumberInput;
+};
