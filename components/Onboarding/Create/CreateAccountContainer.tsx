@@ -1,21 +1,25 @@
 import { useRouter } from "next/router";
 import React, { Dispatch, FC, useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../../globals/Auth";
-import { Employer } from "../../Employer/types";
-import { Freelancer } from "../../Freelancer/types";
 import { CreateAccount } from "./CreateAccount";
-
-export type AccountType = "Freelancer" | "Employer" | null;
-export type AccountDetails = Employer | Freelancer | {};
+import { AccountDetails, AccountType, defaultAccountDetails } from "./types";
 
 export const CreateAccountContainer: FC = () => {
+  const [loading, setLoading] = useState(false);
   const [accountType, setAccountType] = useState<AccountType>(null);
-  const [accountDetails, setAccountDetails] = useState<AccountDetails>({});
+  const [accountDetails, setAccountDetails] = useState<AccountDetails>(
+    defaultAccountDetails
+  );
 
   // once completed mark as onboarded
   return (
     <CreateAccount
-      {...{ accountType, setAccountType, accountDetails, setAccountDetails }}
+      {...{
+        loading,
+        accountType,
+        setAccountType,
+        accountDetails,
+        setAccountDetails,
+      }}
     />
   );
 };

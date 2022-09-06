@@ -3,17 +3,16 @@ import { Freelancer } from "../../Freelancer/types";
 import ArrayInObjectTextInput from "../../Inputs/ArrayInObjectTextInput";
 import { ObjectNumberInput } from "../../Inputs/ObjectNumberInput";
 import { ObjectTextInput } from "../../Inputs/ObjectTextInput";
+import { AccountDetails } from "./types";
 
 interface Props {
   loading: boolean;
-  setLoading: Dispatch<SetStateAction<boolean>>;
-  accountDetails: Freelancer;
-  setAccountDetails: Dispatch<SetStateAction<Freelancer>>;
+  accountDetails: AccountDetails;
+  setAccountDetails: Dispatch<SetStateAction<AccountDetails>>;
 }
 
 export const FreelancerAccount: FC<Props> = ({
   loading,
-  setLoading,
   accountDetails,
   setAccountDetails,
 }) => {
@@ -90,35 +89,37 @@ export const FreelancerAccount: FC<Props> = ({
       {/* Select for expertise level */}
       <div>
         {" "}
-        {accountDetails?.skills.map((skill, index) => (
-          <div className="flex" key={"skill-" + index}>
-            <div>Skill {index + 1}:</div>
-            <ArrayInObjectTextInput
-              placeholder={"Enter a skill"}
-              value={accountDetails}
-              setValue={setAccountDetails}
-              field={"skills"}
-              index={index}
-            />
-            <button
-              onClick={() => {
-                setAccountDetails((prev: Freelancer) => ({
-                  ...prev,
-                  skills: [
-                    ...prev.skills.slice(0, index),
-                    ...prev.skills.slice(index + 1),
-                  ],
-                }));
-              }}
-            >
-              Delete
-            </button>
-          </div>
-        ))}
+        {!accountDetails.hasOwnProperty("skills")
+          ? ""
+          : accountDetails.skills.map((skill, index) => (
+              <div className="flex" key={"skill-" + index}>
+                <div>Skill {index + 1}:</div>
+                <ArrayInObjectTextInput
+                  placeholder={"Enter a skill"}
+                  value={accountDetails}
+                  setValue={setAccountDetails}
+                  field={"skills"}
+                  index={index}
+                />
+                <button
+                  onClick={() => {
+                    setAccountDetails((prev: AccountDetails) => ({
+                      ...prev,
+                      skills: [
+                        ...prev.skills.slice(0, index),
+                        ...prev.skills.slice(index + 1),
+                      ],
+                    }));
+                  }}
+                >
+                  Delete
+                </button>
+              </div>
+            ))}
         <button
           onClick={() => {
             console.log(accountDetails.skills);
-            setAccountDetails((prev: Freelancer) => ({
+            setAccountDetails((prev: AccountDetails) => ({
               ...prev,
               skills: [...prev.skills, ""],
             }));

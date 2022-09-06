@@ -1,5 +1,5 @@
 import React, { Dispatch, FC, SetStateAction } from "react";
-import { AccountType } from "./CreateAccountContainer";
+import { AccountType } from "./types";
 
 interface Props {
   option: AccountType;
