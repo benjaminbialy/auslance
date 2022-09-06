@@ -26,11 +26,10 @@ export const UserOnboarding: FC<Props> = ({
       <form
         onSubmit={async (e) => {
           e.preventDefault();
-          const success = await update(
-            "users",
-            { first_name: firstName.trim(), last_name: lastName.trim() },
-            user.id
-          );
+          const success = await update("users", {
+            first_name: firstName.trim(),
+            last_name: lastName.trim(),
+          });
           if (success) {
             setUserData((prev) => ({
               ...prev,

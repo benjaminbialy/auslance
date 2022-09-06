@@ -1,39 +1,21 @@
-import React, { FC, useState } from "react";
+import { useRouter } from "next/router";
+import React, { Dispatch, FC, useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../../globals/Auth";
+import { Employer } from "../../Employer/types";
+import { Freelancer } from "../../Freelancer/types";
 import { CreateAccount } from "./CreateAccount";
 
+export type AccountType = "Freelancer" | "Employer" | null;
+export type AccountDetails = Employer | Freelancer | {};
+
 export const CreateAccountContainer: FC = () => {
-  const [loading, setLoading] = useState(false);
-
-  // choose freelancer or employer account
-  // for freelancer: get following
-  // hourly_rate int not null,
-  // bio text,
-  // headline text not null,
-  // location text not null,
-  // timezone text,
-  // linkedin text,
-  // github text,
-  // years_of_experience int default 0,
-  // expertise_level expertise default 'beginner',
-  // skills text[],
-  // area_of_work area,
-  // visibility visibility,
-  // availability_per_week int,
-  // time_available int check (time_available between 0 and 24),
-  // website text
-
-  // for employer
-  // get following:
-  // hourly_budget int not null,
-  // bio text,
-  // name text not null,
-  // location text not null,
-  // timezone text,
-  // linkedin text,
-  // time_available int not null check (time_available between 0 and 24),
-  // website text,
-  // policies text[]
+  const [accountType, setAccountType] = useState<AccountType>(null);
+  const [accountDetails, setAccountDetails] = useState<AccountDetails>({});
 
   // once completed mark as onboarded
-  return <CreateAccount {...{ loading }} />;
+  return (
+    <CreateAccount
+      {...{ accountType, setAccountType, accountDetails, setAccountDetails }}
+    />
+  );
 };
