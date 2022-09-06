@@ -20,24 +20,29 @@ function MyApp({ Component, pageProps }: AppProps) {
   });
 
   useEffect(() => {
+    console.log(router);
+    console.log(session);
     const handleLoad = async () => {
       if (session) {
         const data = await getUserData(supabase.auth.user().id);
         if (data) {
           setUserData({ ...data });
+          console.log(data);
           if (!data.isOnboarded) {
             if (data.first_name.trim() == "" || data.last_name.trim() == "") {
               router.push("/onboarding/user");
             } else {
               router.push("/onboarding/create");
             }
+          } else {
+            console.log("hi");
           }
         }
       }
     };
 
     handleLoad();
-  }, [session, router]);
+  }, [session]);
 
   const authContext = {
     authenticated: session ? true : false,

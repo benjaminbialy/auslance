@@ -1,4 +1,3 @@
-import { User } from "@supabase/supabase-js";
 import { createContext, Dispatch, SetStateAction } from "react";
 import { UserData } from "../lib/supabase/getUserData";
 

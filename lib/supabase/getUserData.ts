@@ -11,7 +11,11 @@ export interface UserData {
 export const getUserData = async (userID: string): Promise<UserData | void> => {
   const { data, error } = await supabase
     .from("users")
-    .select()
+    .select(
+      `*,
+    employers( employer_id ),
+    freelancers( freelancer_id )`
+    )
     .eq("user_id", userID);
 
   if (error) return console.error(error);
