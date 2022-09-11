@@ -28,7 +28,7 @@ export const Login: FC<Props> = ({ email, setEmail }) => {
         }}
       />
       <button type="submit">{loading ? "Loading..." : "Sign in"}</button>
-      <Link href={"/auth/onboarding"}>
+      <Link href={"/onboarding/auth"}>
         <a>Don&apos;t have an account? Click here!</a>
       </Link>
       <div>{error}</div>
