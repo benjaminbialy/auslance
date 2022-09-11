@@ -1,4 +1,6 @@
-export interface Employer {
+export interface EmployerInterface {
+  employer_id: string;
+  user_id: string;
   hourlyBudget: number;
   bio: string;
   name: string;

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { FC } from "react";
+import { FreelancerContainer } from "../../../components/Freelancer/FreelancerContainer";
 
-function freelancer() {
-  return <div>freelancer</div>;
-}
+const freelancerID: FC = () => {
+  return <FreelancerContainer />;
+};
 
-export default freelancer;
+export default freelancerID;

@@ -1,7 +1,7 @@
-import React from "react";
+import React, { FC } from "react";
 
-function employer() {
-  return <div>emoloyer</div>;
-}
+const EmployerID: FC = () => {
+  return <div>EmployerID</div>;
+};
 
-export default employer;
+export default EmployerID;

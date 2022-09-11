@@ -10,7 +10,8 @@ export enum Visibility {
   public = "public",
 }
 
-export interface Freelancer {
+export interface FreelancerInterface {
+  freelancer_id: string;
   hourlyRate: number;
   bio: string;
   headline: string;

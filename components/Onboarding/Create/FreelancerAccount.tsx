@@ -1,4 +1,5 @@
 import React, { Dispatch, FC, SetStateAction } from "react";
+import { supabase } from "../../../lib/supabase/supabaseClient";
 import ArrayInObjectTextInput from "../../Inputs/ArrayInObjectTextInput";
 import { InputLabelWrapper } from "../../Inputs/InputLabelWrapper";
 import { ObjectNumberInput } from "../../Inputs/ObjectNumberInput";
@@ -18,8 +19,20 @@ export const FreelancerAccount: FC<Props> = ({
   accountDetails,
   setAccountDetails,
 }) => {
+  const user = supabase.auth.user();
   return (
-    <form className="px-24 py-16" onSubmit={() => saveFreelanceAccount()}>
+    <form
+      className="px-24 py-16"
+      onSubmit={async (e) => {
+        e.preventDefault();
+        try {
+          await saveFreelanceAccount(accountDetails, user.id);
+          await supabase.from("users").update({ isOnboarded: true });
+        } catch (error) {
+          console.log(error);
+        }
+      }}
+    >
       <InputLabelWrapper id={"hourlyRate-" + id} label={"Hourly Rate (cents)"}>
         <ObjectNumberInput
           id={id}
@@ -196,8 +209,28 @@ export const FreelancerAccount: FC<Props> = ({
           field={"website"}
         />
       </InputLabelWrapper>
+      <button type="submit">Submit</button>
     </form>
   );
 };
 
-const saveFreelanceAccount = async () => {};
+const saveFreelanceAccount = async (
+  accountDetails: AccountDetails,
+  userID: string
+) => {
+  console.log("res");
+  const res = await supabase.from("freelancers").insert({
+    user_id: userID,
+    hourly_rate: accountDetails.hourlyRate,
+    bio: accountDetails.bio,
+    headline: accountDetails.headline,
+    location: accountDetails.location,
+    timezone: accountDetails.timezone,
+    linkedin: accountDetails.linkedIn,
+    github: accountDetails.gitHub,
+    skills: accountDetails.skills,
+    availability_per_week: accountDetails.timeAvailable,
+    website: accountDetails.website,
+  });
+  console.log(res);
+};

@@ -17,6 +17,8 @@ function MyApp({ Component, pageProps }: AppProps) {
     first_name: "",
     last_name: "",
     isOnboarded: false,
+    freelancers: [],
+    employers: [],
   });
 
   useEffect(() => {
@@ -35,7 +37,17 @@ function MyApp({ Component, pageProps }: AppProps) {
               router.push("/onboarding/create");
             }
           } else {
-            console.log("hi");
+            if (data.freelancers.length > 0) {
+              router.push(
+                `/profiles/freelancer/${data.freelancers[0].freelancer_id}`
+              );
+            } else if (data.employers.length > 0) {
+              router.push(
+                `/profiles/employers/${data.employers[0].employer_id}`
+              );
+            } else {
+              alert("Something went wrong!");
+            }
           }
         }
       }

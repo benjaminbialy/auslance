@@ -1,3 +1,5 @@
+import { EmployerInterface } from "../../components/Employer/types";
+import { FreelancerInterface } from "../../components/Freelancer/types";
 import { supabase } from "./supabaseClient";
 
 export interface UserData {
@@ -6,6 +8,8 @@ export interface UserData {
   first_name: string;
   last_name: string;
   isOnboarded: boolean;
+  freelancers: (FreelancerInterface | null)[];
+  employers: (EmployerInterface | null)[];
 }
 
 export const getUserData = async (userID: string): Promise<UserData | void> => {
@@ -13,8 +17,8 @@ export const getUserData = async (userID: string): Promise<UserData | void> => {
     .from("users")
     .select(
       `*,
-    employers( employer_id ),
-    freelancers( freelancer_id )`
+    employers(*),
+    freelancers(*)`
     )
     .eq("user_id", userID);
 
