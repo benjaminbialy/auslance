@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React, { Dispatch, FC, SetStateAction } from "react";
-import { useSignUp } from "../../../lib/supabase/useSignUp";
+import { useSignIn } from "../../../lib/supabase/useSignIn";
 import SimpleTextInput from "../../Inputs/SimpleTextInput";
 
 interface Props {
@@ -9,13 +9,13 @@ interface Props {
 }
 
 export const Auth: FC<Props> = ({ email, setEmail }) => {
-  const { loading, error, success, signUp } = useSignUp();
+  const { loading, error, success, signIn } = useSignIn();
   return (
     <div>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          signUp(email);
+          signIn(email);
         }}
       >
         <h3>Sign in using Magic Link</h3>

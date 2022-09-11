@@ -11,7 +11,7 @@ export const UserOnboardingContainer: FC = () => {
   const router = useRouter();
 
   useEffect(() => {
-    if (userData.first_name.trim() != "" && userData.last_name.trim()) {
+    if (userData.first_name != undefined && userData.last_name != undefined) {
       router.push("/onboarding/create");
     }
   }, [userData, router]);

@@ -26,10 +26,10 @@ function MyApp({ Component, pageProps }: AppProps) {
       if (session) {
         const data = await getUserData(supabase.auth.user().id);
         if (data) {
-          setUserData({ ...data });
           console.log(data);
+          setUserData({ ...data });
           if (!data.isOnboarded) {
-            if (data.first_name.trim() == "" || data.last_name.trim() == "") {
+            if (data.first_name == undefined || data.last_name == undefined) {
               router.push("/onboarding/user");
             } else {
               router.push("/onboarding/create");
