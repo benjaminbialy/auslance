@@ -4,6 +4,7 @@ import { FreelancerAccount } from "./FreelancerAccount";
 import { AccountDetails, AccountType } from "./types";
 
 interface Props {
+  id: string;
   loading: boolean;
   accountType: AccountType;
   setAccountType: Dispatch<SetStateAction<AccountType>>;
@@ -12,6 +13,7 @@ interface Props {
 }
 
 export const CreateAccount: FC<Props> = ({
+  id,
   loading,
   accountType,
   setAccountType,
@@ -34,7 +36,7 @@ export const CreateAccount: FC<Props> = ({
       </div>
       {accountType == "Freelancer" && (
         <FreelancerAccount
-          {...{ loading, accountDetails, setAccountDetails }}
+          {...{ id, loading, accountDetails, setAccountDetails }}
         />
       )}
     </div>

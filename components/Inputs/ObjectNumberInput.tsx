@@ -10,6 +10,7 @@ interface Props {
   min: number;
   max?: number;
   step?: number;
+  id: string;
 }
 
 export const ObjectNumberInput: FC<Props> = ({
@@ -22,9 +23,11 @@ export const ObjectNumberInput: FC<Props> = ({
   min = 0,
   max = null,
   step = 1,
+  id,
 }) => {
   return (
     <input
+      id={field + "-" + id}
       type={"number"}
       placeholder={placeholder}
       value={value[field]}

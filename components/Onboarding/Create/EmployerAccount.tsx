@@ -1,5 +1,4 @@
 import React, { Dispatch, FC, SetStateAction } from "react";
-import { Freelancer } from "../../Freelancer/types";
 import ArrayInObjectTextInput from "../../Inputs/ArrayInObjectTextInput";
 import { ObjectNumberInput } from "../../Inputs/ObjectNumberInput";
 import { ObjectTextInput } from "../../Inputs/ObjectTextInput";
@@ -9,16 +8,19 @@ interface Props {
   loading: boolean;
   accountDetails: AccountDetails;
   setAccountDetails: Dispatch<SetStateAction<AccountDetails>>;
+  id: string;
 }
 
 export const EmployerAccount: FC<Props> = ({
   loading,
   accountDetails,
   setAccountDetails,
+  id,
 }) => {
   return (
     <form>
       <ObjectNumberInput
+        id={id}
         loading={loading}
         required={true}
         value={accountDetails}
@@ -29,6 +31,7 @@ export const EmployerAccount: FC<Props> = ({
         step={10}
       />
       <ObjectTextInput
+        id={id}
         loading={loading}
         required={true}
         value={accountDetails}
@@ -37,6 +40,7 @@ export const EmployerAccount: FC<Props> = ({
         field={"bio"}
       />
       <ObjectTextInput
+        id={id}
         loading={loading}
         required={true}
         value={accountDetails}
@@ -45,6 +49,7 @@ export const EmployerAccount: FC<Props> = ({
         field={"name"}
       />
       <ObjectTextInput
+        id={id}
         loading={loading}
         required={true}
         value={accountDetails}
@@ -53,6 +58,7 @@ export const EmployerAccount: FC<Props> = ({
         field={"location"}
       />
       <ObjectTextInput
+        id={id}
         loading={loading}
         required={true}
         value={accountDetails}
@@ -61,6 +67,7 @@ export const EmployerAccount: FC<Props> = ({
         field={"timezone"}
       />
       <ObjectTextInput
+        id={id}
         loading={loading}
         required={true}
         value={accountDetails}
@@ -69,6 +76,7 @@ export const EmployerAccount: FC<Props> = ({
         field={"linkedIn"}
       />
       <ObjectNumberInput
+        id={id}
         loading={loading}
         required={true}
         value={accountDetails}
@@ -79,6 +87,7 @@ export const EmployerAccount: FC<Props> = ({
         step={1}
       />
       <ObjectTextInput
+        id={id}
         loading={loading}
         required={true}
         value={accountDetails}
@@ -94,6 +103,7 @@ export const EmployerAccount: FC<Props> = ({
               <div className="flex" key={"policy-" + index}>
                 <div>Skill {index + 1}:</div>
                 <ArrayInObjectTextInput
+                  id={id}
                   placeholder={"Enter a policy"}
                   value={accountDetails}
                   setValue={setAccountDetails}

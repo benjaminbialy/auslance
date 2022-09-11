@@ -7,6 +7,7 @@ interface Props {
   field: string;
   value: Object;
   setValue: Dispatch<SetStateAction<Object>>;
+  id: string;
 }
 
 export const ObjectTextInput: FC<Props> = ({
@@ -16,9 +17,11 @@ export const ObjectTextInput: FC<Props> = ({
   field,
   value,
   setValue,
+  id,
 }) => {
   return (
     <input
+      id={field + "-" + id}
       placeholder={placeholder}
       value={value[field]}
       required={required}

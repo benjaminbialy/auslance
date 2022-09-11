@@ -6,9 +6,11 @@ function ArrayInObjectTextInput({
   placeholder,
   field,
   index = 0,
+  id,
 }) {
   return (
     <input
+      id={field + "-" + index + "-" + id}
       placeholder={placeholder}
       value={value[field][index]}
       onChange={(e: ChangeEvent<HTMLInputElement>) => {

@@ -6,6 +6,7 @@ interface Props {
   placeholder: string;
   disabled?: boolean;
   required?: boolean;
+  id: string;
 }
 
 const SimpleTextInput: FC<Props> = ({
@@ -14,9 +15,11 @@ const SimpleTextInput: FC<Props> = ({
   placeholder,
   disabled = false,
   required = false,
+  id,
 }) => {
   return (
     <input
+      id={id}
       placeholder={placeholder}
       value={value}
       disabled={disabled}
