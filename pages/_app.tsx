@@ -54,7 +54,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     };
 
     handleLoad();
-  }, [session]);
+  }, [session, router]);
 
   const authContext = {
     authenticated: session ? true : false,
