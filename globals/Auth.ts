@@ -17,6 +17,8 @@ const defaultAuthContext: AuthContext = {
     first_name: "",
     last_name: "",
     isOnboarded: false,
+    freelancers: [],
+    employers: [],
   },
 };
 
