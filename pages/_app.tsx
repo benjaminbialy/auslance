@@ -6,11 +6,10 @@ import { useSession } from "../lib/supabase/useSession";
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase/supabaseClient";
 import { getUserData, UserData } from "../lib/supabase/getUserData";
-import { useRouter } from "next/router";
+import Router from "next/router";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { loading: isLoading, session } = useSession();
-  const router = useRouter();
   const [userData, setUserData] = useState<UserData>({
     user_id: "",
     email: "",
@@ -22,8 +21,6 @@ function MyApp({ Component, pageProps }: AppProps) {
   });
 
   useEffect(() => {
-    console.log(router);
-    console.log(session);
     const handleLoad = async () => {
       if (session) {
         const data = await getUserData(supabase.auth.user().id);
@@ -32,17 +29,17 @@ function MyApp({ Component, pageProps }: AppProps) {
           setUserData({ ...data });
           if (!data.isOnboarded) {
             if (data.first_name == undefined || data.last_name == undefined) {
-              router.push("/onboarding/user");
+              Router.push("/onboarding/user");
             } else {
-              router.push("/onboarding/create");
+              Router.push("/onboarding/create");
             }
           } else {
             if (data.freelancers.length > 0) {
-              router.push(
+              Router.push(
                 `/profiles/freelancer/${data.freelancers[0].freelancer_id}`
               );
             } else if (data.employers.length > 0) {
-              router.push(
+              Router.push(
                 `/profiles/employers/${data.employers[0].employer_id}`
               );
             } else {
@@ -52,9 +49,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         }
       }
     };
-
     handleLoad();
-  }, [session, router]);
+  }, [session]);
 
   const authContext = {
     authenticated: session ? true : false,
