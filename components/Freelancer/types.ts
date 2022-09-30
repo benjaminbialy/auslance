@@ -1,3 +1,5 @@
+import { UserData } from "../../lib/supabase/getUserData";
+
 export enum ExpertiseLevel {
   beginner = "beginner",
   intermediate = "intermediate",
@@ -26,4 +28,5 @@ export interface FreelancerInterface {
   visibility: Visibility;
   timeAvailable: number;
   website?: string;
+  users?: Pick<UserData, "first_name" | "last_name" | "email">;
 }

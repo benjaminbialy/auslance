@@ -21,13 +21,21 @@ export const useDatabase = () => {
     }
     return true;
   };
-  const read = async (table: string, select: string = "") => {
-    const { data } = await supabase
+  const read = async (
+    table: string,
+    select: string = "*",
+    eq: { column: string; value: string } = {
+      column: "user_id",
+      value: user.id,
+    }
+  ) => {
+    const { data, error } = await supabase
       .from(table)
       .select(select)
-      .eq("user_id", user.id);
+      .eq(eq.column, eq.value);
+    if (error) setError(error.message);
 
-    return data;
+    return { data, error };
   };
 
   return { loading, update, read, error, success };

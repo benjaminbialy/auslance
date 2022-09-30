@@ -1,7 +1,13 @@
+import { useRouter } from "next/router";
 import React, { FC, useState } from "react";
+import { useFreelancer } from "../../hooks/useFreelancer";
+import { Freelancer } from "./Freelancer";
 
 export const FreelancerContainer: FC = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const { query } = useRouter();
+  const { freelancer, isLoading, error } = useFreelancer(
+    query.freelancer_id as string
+  );
 
-  return <div>FreelancerContainer</div>;
+  return <Freelancer {...{ isLoading, freelancer, error }} />;
 };
