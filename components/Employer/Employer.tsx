@@ -22,7 +22,7 @@ export const Employer: FC<Props> = ({ employer }) => {
         <div>{`Timezone: ${employer.timezone}`}</div>
         <div>{`Website: ${employer.website}`}</div>
         <div>
-          {employer.policies.map((policy, index) => (
+          {employer?.policies?.map((policy, index) => (
             <div key={index}>{policy}</div>
           ))}
         </div>

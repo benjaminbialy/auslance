@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { EmployerContainer } from "../../../components/Employer/EmployerContainer";
 import { EmployerInterface } from "../../../components/Employer/types";
 import { supabase } from "../../../lib/supabase/supabaseClient";
 import { handleProfileID } from "../../../utils/auth/handleProfileID";
@@ -8,7 +9,7 @@ interface Props {
 }
 
 const EmployerID: FC<Props> = ({ profile }) => {
-  return <div>EmployerID</div>;
+  return <EmployerContainer {...{ profile }} />;
 };
 
 export default EmployerID;
