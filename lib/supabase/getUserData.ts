@@ -22,6 +22,8 @@ export const getUserData = async (userID: string): Promise<UserData | void> => {
     )
     .eq("user_id", userID);
 
+  console.log(error);
+  console.log(data);
   if (error) return console.error(error);
 
   return data[0];

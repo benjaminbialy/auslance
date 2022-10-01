@@ -5,11 +5,6 @@ import { Auth } from "./Auth";
 
 export const AuthContainer: FC = () => {
   const [email, setEmail] = useState("");
-  const { authenticated } = useContext(AuthContext);
-
-  useEffect(() => {
-    if (authenticated) Router.push("/onboarding/user");
-  }, []);
 
   return <Auth {...{ email, setEmail }} />;
 };
