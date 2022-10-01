@@ -1,16 +1,9 @@
+import {
+  Area,
+  ExpertiseLevel,
+  Visibility,
+} from "../../globalTypes/databaseTypes";
 import { UserData } from "../../lib/supabase/getUserData";
-
-export enum ExpertiseLevel {
-  beginner = "beginner",
-  intermediate = "intermediate",
-  expert = "expert",
-}
-
-export type Area = "sales" | "engineering" | "marketing" | "design";
-export enum Visibility {
-  private = "private",
-  public = "public",
-}
 
 export interface FreelancerInterface {
   freelancer_id: string;
