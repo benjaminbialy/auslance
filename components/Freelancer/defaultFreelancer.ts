@@ -1,4 +1,5 @@
-import { ExpertiseLevel, FreelancerInterface, Visibility } from "./types";
+import { ExpertiseLevel, Visibility } from "../../globalTypes/databaseTypes";
+import { FreelancerInterface } from "./types";
 
 export const defaultFreelancer: FreelancerInterface = {
   freelancer_id: "",
