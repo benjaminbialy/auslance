@@ -1,9 +1,10 @@
 import React from "react";
+import { ProfileContainer } from "../../components/Profile/ProfileContainer";
 import { supabase } from "../../lib/supabase/supabaseClient";
-import { handleNotOnboarded } from "../../utils/auth/handleNotOnboarded";
+import { handleProfile } from "../../utils/auth/handleProfile";
 
-function index() {
-  return <div>my profile</div>;
+function index({ user }) {
+  return <ProfileContainer {...{ user }} />;
 }
 
 export default index;
@@ -11,7 +12,7 @@ export default index;
 export async function getServerSideProps({ req, res }) {
   const { user } = await supabase.auth.api.getUserByCookie(req, res);
   if (user) {
-    return handleNotOnboarded(user);
+    return handleProfile(user);
   }
   return { props: {}, redirect: { destination: "/login", permanent: false } };
 }
