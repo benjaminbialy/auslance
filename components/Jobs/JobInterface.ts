@@ -1,13 +1,26 @@
+import {
+  Area,
+  JobLength,
+  JobStatus,
+  RemoteLevel,
+} from "../../globalTypes/databaseTypes";
+
 export default interface JobInterface {
-  id?: number;
+  jobID?: number;
+  employerID?: string;
+  freelancerID?: string;
+  area: Area;
+  length: JobLength;
+  remote_level: RemoteLevel;
+  is_hourly: boolean;
+  max_cents_per_hour: number;
+  full_price: number;
   title: string;
   location: string;
-  employerName: string;
   description: string;
   skills: Array<string>;
-  budget: number;
-  hoursPerWeek: number;
-  timePosted: number;
-  noProposals: number;
-  employerReview: number;
+  hours_per_week: number;
+  time_posted?: number;
+  no_proposals: number;
+  status: JobStatus;
 }

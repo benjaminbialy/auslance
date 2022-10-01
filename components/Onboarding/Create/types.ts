@@ -1,4 +1,8 @@
-import { Area, ExpertiseLevel, Visibility } from "../../Freelancer/types";
+import {
+  Area,
+  ExpertiseLevel,
+  Visibility,
+} from "../../../globalTypes/databaseTypes";
 
 export type AccountType = "Freelancer" | "Employer" | null;
 export type AccountDetails = {
