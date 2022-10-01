@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import { supabase } from "./supabaseClient";
-import { useRouter } from "next/router";
 import axios from "axios";
 
 export const useSession = () => {
   const [session, setSession] = useState(null);
   const [loading, setLoading] = useState(true);
-  const router = useRouter();
 
   useEffect(() => {
     let mounted = true;
