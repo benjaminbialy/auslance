@@ -23,7 +23,12 @@ export const ObjectTextInput: FC<Props> = ({
 }) => {
   return (
     <>
-      <label htmlFor={`${field}-${id}`}>{labelText}</label>
+      <label
+        className={`${isRequired ? "required" : ""}`}
+        htmlFor={`${field}-${id}`}
+      >
+        {labelText}
+      </label>
       <input
         id={`${field}-${id}`}
         placeholder={placeholder}
