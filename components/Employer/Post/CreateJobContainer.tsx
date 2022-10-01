@@ -1,23 +1,32 @@
-import React, { useId, useState } from "react";
+import React, { FormEvent, useId, useState } from "react";
+import { defaultJob } from "../../../defaultValues/defaultJob";
+import { JobStatus } from "../../../globalTypes/databaseTypes";
+import { useDatabase } from "../../../lib/supabase/useDatabase";
 import JobInterface from "../../Jobs/JobInterface";
 import CreateJob from "./CreateJob";
 
-function CreateJobContainer() {
+function CreateJobContainer({ employer }) {
   const id = useId();
-  const [job, setJob] = useState<JobInterface>({
-    title: "",
-    location: "",
-    employerName: "",
-    description: "",
-    skills: [],
-    budget: 0,
-    hoursPerWeek: 0,
-    timePosted: 0,
-    noProposals: 0,
-    employerReview: 1,
-  });
+  const [job, setJob] = useState<JobInterface>(defaultJob);
+  const { write, error } = useDatabase();
 
-  return <CreateJob {...{ job, setJob, id }} />;
+  const onSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+
+    try {
+      const jobEntry = {
+        employer_id: employer.employer_id,
+        status: JobStatus.posted,
+        ...job,
+      };
+      const wasSuccessful = await write("jobs", jobEntry);
+      console.log(wasSuccessful);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return <CreateJob {...{ job, setJob, id, onSubmit, error }} />;
 }
 
 export default CreateJobContainer;
