@@ -7,17 +7,37 @@ export const useDatabase = () => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
 
-  const update = async (table: string, values: object) => {
+  const write = async (table: string, values: object) => {
+    setError("");
+    setLoading(true);
+    const { error } = await supabase.from(table).insert(values);
+    setLoading(false);
+    if (error) {
+      console.log(error);
+      setError(error.message);
+      return false;
+    }
+    return true;
+  };
+  const update = async (
+    table: string,
+    values: object,
+    eq: { column: string; value: string } = {
+      column: "user_id",
+      value: user.id,
+    }
+  ) => {
     setError("");
     setLoading(true);
     const { error } = await supabase
       .from(table)
       .update(values)
-      .eq("user_id", user.id);
+      .eq(eq.column, eq.value);
     setLoading(false);
     if (error) {
       console.log(error);
-      return setError(error.message);
+      setError(error.message);
+      return false;
     }
     return true;
   };
@@ -38,5 +58,5 @@ export const useDatabase = () => {
     return { data, error };
   };
 
-  return { loading, update, read, error, success };
+  return { loading, update, write, read, error, success };
 };
