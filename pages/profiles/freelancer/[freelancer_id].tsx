@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import { EmployerInterface } from "../../../components/Employer/types";
 import { FreelancerContainer } from "../../../components/Freelancer/FreelancerContainer";
 import { FreelancerInterface } from "../../../components/Freelancer/types";
 import { supabase } from "../../../lib/supabase/supabaseClient";

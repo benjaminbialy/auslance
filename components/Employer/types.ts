@@ -1,3 +1,5 @@
+import { UserData } from "../../lib/supabase/getUserData";
+
 export interface EmployerInterface {
   employer_id: string;
   user_id: string;
@@ -10,12 +12,5 @@ export interface EmployerInterface {
   timeAvailable: number;
   website?: string;
   policies: string[];
+  users?: Pick<UserData, "first_name" | "last_name" | "email">;
 }
-
-//hourlyBudget: 0,
-// bio: "",
-// name: "",
-// location: "",
-// timezone: "",
-// timeAvailable: 0,
-// policies: [],
