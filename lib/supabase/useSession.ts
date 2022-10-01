@@ -23,6 +23,7 @@ export const useSession = () => {
     getInitialSession();
 
     supabase.auth.onAuthStateChange(async (_event, session) => {
+      console.log("change");
       setSession(session);
       await axios.post("/api/setAuthCookie", {
         event: _event,

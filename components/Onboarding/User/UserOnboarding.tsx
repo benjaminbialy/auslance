@@ -20,7 +20,6 @@ export const UserOnboarding: FC<Props> = ({
   setUserData,
 }) => {
   const { loading, error, success, update } = useDatabase();
-  const user = supabase.auth.user();
   return (
     <div>
       <form

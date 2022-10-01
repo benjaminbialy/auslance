@@ -7,46 +7,36 @@ import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase/supabaseClient";
 import { getUserData, UserData } from "../lib/supabase/getUserData";
 import Router from "next/router";
+import { defaultUserData } from "../defaultValues/defaultUserData";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { loading: isLoading, session } = useSession();
-  const [userData, setUserData] = useState<UserData>({
-    user_id: "",
-    email: "",
-    first_name: "",
-    last_name: "",
-    isOnboarded: false,
-    freelancers: [],
-    employers: [],
-  });
+  const [userData, setUserData] = useState<UserData>(defaultUserData);
+
+  useEffect(() => {
+    if (!userData.isOnboarded) {
+      if (
+        userData.first_name === undefined ||
+        userData.last_name === undefined
+      ) {
+        Router.push("/onboarding/user");
+      } else {
+        Router.push("/onboarding/create");
+      }
+    }
+  }, [userData]);
 
   useEffect(() => {
     const handleLoad = async () => {
+      console.log("handle", session);
       if (session) {
         const data = await getUserData(supabase.auth.user().id);
         if (data) {
           console.log(data);
           setUserData({ ...data });
-          if (!data.isOnboarded) {
-            if (data.first_name == undefined || data.last_name == undefined) {
-              Router.push("/onboarding/user");
-            } else {
-              Router.push("/onboarding/create");
-            }
-          } else {
-            if (data.freelancers.length > 0) {
-              Router.push(
-                `/profiles/freelancer/${data.freelancers[0].freelancer_id}`
-              );
-            } else if (data.employers.length > 0) {
-              Router.push(
-                `/profiles/employers/${data.employers[0].employer_id}`
-              );
-            } else {
-              alert("Something went wrong!");
-            }
-          }
         }
+      } else {
+        setUserData(defaultUserData);
       }
     };
     handleLoad();
