@@ -1,6 +1,6 @@
+import Router from "next/router";
 import React, { Dispatch, FC, SetStateAction } from "react";
-import { UserData } from "../../../lib/supabase/getUserData";
-import { supabase } from "../../../lib/supabase/supabaseClient";
+
 import { useDatabase } from "../../../lib/supabase/useDatabase";
 import SimpleTextInput from "../../Inputs/SimpleTextInput";
 
@@ -9,7 +9,6 @@ interface Props {
   setFirstName: Dispatch<SetStateAction<string>>;
   lastName: string;
   setLastName: Dispatch<SetStateAction<string>>;
-  setUserData: Dispatch<SetStateAction<UserData>>;
 }
 
 export const UserOnboarding: FC<Props> = ({
@@ -17,9 +16,8 @@ export const UserOnboarding: FC<Props> = ({
   setFirstName,
   lastName,
   setLastName,
-  setUserData,
 }) => {
-  const { loading, error, success, update } = useDatabase();
+  const { loading, error, update } = useDatabase();
   return (
     <div>
       <form
@@ -30,11 +28,7 @@ export const UserOnboarding: FC<Props> = ({
             last_name: lastName.trim(),
           });
           if (success) {
-            setUserData((prev) => ({
-              ...prev,
-              first_name: firstName.trim(),
-              last_name: lastName.trim(),
-            }));
+            Router.push("/onboarding/create");
           }
         }}
       >
