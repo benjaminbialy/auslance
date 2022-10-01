@@ -1,14 +1,11 @@
 import React, { FC } from "react";
-import { Error } from "../../globalTypes/error";
 import { FreelancerInterface } from "./types";
 
 interface Props {
-  isLoading: boolean;
   freelancer: FreelancerInterface;
-  error: Error;
 }
 
-export const Freelancer: FC<Props> = ({ isLoading, freelancer, error }) => {
+export const Freelancer: FC<Props> = ({ freelancer }) => {
   // not found
   // error
   // loading

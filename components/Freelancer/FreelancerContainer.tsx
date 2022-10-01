@@ -2,12 +2,12 @@ import { useRouter } from "next/router";
 import React, { FC, useState } from "react";
 import { useFreelancer } from "../../hooks/useFreelancer";
 import { Freelancer } from "./Freelancer";
+import { FreelancerInterface } from "./types";
 
-export const FreelancerContainer: FC = () => {
-  const { query } = useRouter();
-  const { freelancer, isLoading, error } = useFreelancer(
-    query.freelancer_id as string
-  );
+interface Props {
+  profile: FreelancerInterface;
+}
 
-  return <Freelancer {...{ isLoading, freelancer, error }} />;
+export const FreelancerContainer: FC<Props> = ({ profile: freelancer }) => {
+  return <Freelancer {...{ freelancer }} />;
 };
