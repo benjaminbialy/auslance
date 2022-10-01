@@ -1,9 +1,10 @@
 import React, { Dispatch, FC, SetStateAction, ChangeEvent } from "react";
 
 interface Props {
-  loading: boolean;
-  required: boolean;
+  isLoading: boolean;
+  isRequired: boolean;
   placeholder: string;
+  labelText: string;
   field: string;
   value: Object;
   setValue: Dispatch<SetStateAction<Object>>;
@@ -11,8 +12,9 @@ interface Props {
 }
 
 export const ObjectTextInput: FC<Props> = ({
-  loading,
-  required = true,
+  isLoading,
+  isRequired = true,
+  labelText,
   placeholder,
   field,
   value,
@@ -20,14 +22,17 @@ export const ObjectTextInput: FC<Props> = ({
   id,
 }) => {
   return (
-    <input
-      id={field + "-" + id}
-      placeholder={placeholder}
-      value={value[field]}
-      required={required}
-      onChange={(e: ChangeEvent<HTMLInputElement>) =>
-        setValue((prev) => ({ ...prev, [field]: e.target.value }))
-      }
-    />
+    <>
+      <label htmlFor={`${field}-${id}`}>{labelText}</label>
+      <input
+        id={`${field}-${id}`}
+        placeholder={placeholder}
+        value={value[field]}
+        required={isRequired}
+        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+          setValue((prev) => ({ ...prev, [field]: e.target.value }))
+        }
+      />
+    </>
   );
 };

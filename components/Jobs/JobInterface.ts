@@ -1,5 +1,5 @@
 export default interface JobInterface {
-  id: number;
+  id?: number;
   title: string;
   location: string;
   employerName: string;

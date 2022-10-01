@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useId, useState } from "react";
 import JobInterface from "../../Jobs/JobInterface";
 import CreateJob from "./CreateJob";
 
 function CreateJobContainer() {
+  const id = useId();
   const [job, setJob] = useState<JobInterface>({
-    id: 0,
     title: "",
     location: "",
     employerName: "",
@@ -17,7 +17,7 @@ function CreateJobContainer() {
     employerReview: 1,
   });
 
-  return <CreateJob {...{ job, setJob }} />;
+  return <CreateJob {...{ job, setJob, id }} />;
 }
 
 export default CreateJobContainer;
