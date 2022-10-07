@@ -1,6 +1,6 @@
 -- types
 create type expertise as enum ('beginner','intermediate','expert');
-create type area as (sales text, engineering text, marketing text, design text);
+create type area_of_work as enum ('sales', 'engineering', 'marketing', 'design');
 create type visibility as enum ('private','public');
 create type remote_level as enum ('none','hybrid','full');
 create type job_status as enum ('posted','cancelled','current','completed');
@@ -28,7 +28,7 @@ create table public.freelancers (
   years_of_experience int default 0, 
   expertise_level expertise default 'beginner',
   skills text[],
-  area_of_work area,
+  area_of_work area_of_work,
   visibility visibility,
   availability_per_week int,
   time_available int check (time_available between 0 and 24),
@@ -56,7 +56,7 @@ create table public.jobs (
   status job_status not null,
   length length,
   skills text[],
-  area area[],
+  area_of_work area_of_work,
   remote_level remote_level,
   title text not null, 
   is_hourly boolean, 
