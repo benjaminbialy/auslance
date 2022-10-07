@@ -1,3 +1,4 @@
+import Router from "next/router";
 import React, { FormEvent, useId, useState } from "react";
 import { defaultJob } from "../../../defaultValues/defaultJob";
 import { JobStatus } from "../../../globalTypes/databaseTypes";
@@ -21,7 +22,7 @@ function CreateJobContainer({ employer }) {
         time_posted: Date.now(),
       };
       const wasSuccessful = await write("jobs", jobEntry);
-      console.log(wasSuccessful);
+      if (wasSuccessful) Router.push("/employer/dashboard");
     } catch (error) {
       console.log(error);
     }
