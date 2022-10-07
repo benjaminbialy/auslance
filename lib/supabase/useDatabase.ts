@@ -10,7 +10,9 @@ export const useDatabase = () => {
   const write = async (table: string, values: object) => {
     setError("");
     setLoading(true);
-    const { error } = await supabase.from(table).insert(values);
+    console.log(values);
+
+    const { error } = await supabase.from(table).insert([values]);
     setLoading(false);
     if (error) {
       console.log(error);

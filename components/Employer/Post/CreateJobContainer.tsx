@@ -18,6 +18,7 @@ function CreateJobContainer({ employer }) {
         employer_id: employer.employer_id,
         status: JobStatus.posted,
         ...job,
+        time_posted: Date.now(),
       };
       const wasSuccessful = await write("jobs", jobEntry);
       console.log(wasSuccessful);

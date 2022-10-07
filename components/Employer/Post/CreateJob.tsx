@@ -4,6 +4,7 @@ import { lengthOfJobOptions } from "../../../constants/lengthOfJobOptions";
 import { locationOptions } from "../../../constants/locationOptions";
 import { remoteLevelOptions } from "../../../constants/remoteLevelOptions";
 import ArrayInObjectTextInput from "../../Inputs/ArrayInObjectTextInput";
+import { ObjectCheckbox } from "../../Inputs/ObjectCheckbox";
 import { ObjectNumberInput } from "../../Inputs/ObjectNumberInput";
 import { ObjectSelectInput } from "../../Inputs/ObjectSelectInput";
 import { ObjectTextInput } from "../../Inputs/ObjectTextInput";
@@ -21,6 +22,7 @@ const CreateJob: FC<Props> = ({ job, setJob, id, onSubmit, error }) => {
   return (
     <>
       <div>{error}</div>
+      <div>{JSON.stringify(job)}</div>
       <form
         className="flex flex-col m-10 border-2 border-slate-200"
         onSubmit={(e: FormEvent) => onSubmit(e)}
@@ -89,11 +91,19 @@ const CreateJob: FC<Props> = ({ job, setJob, id, onSubmit, error }) => {
           isRequired={true}
           id={id}
         />
+        <ObjectCheckbox
+          placeholder={"10000"}
+          labelText={"Is this job hourly?"}
+          value={job}
+          setValue={setJob}
+          field={"is_hourly"}
+          isLoading={false}
+          id={id}
+        />
         <ObjectNumberInput
           placeholder={"10000"}
           labelText={"Max Rate per Hour (cents):"}
           value={job}
-          step={10000}
           min={0}
           setValue={setJob}
           field={"max_cents_per_hour"}
@@ -102,39 +112,28 @@ const CreateJob: FC<Props> = ({ job, setJob, id, onSubmit, error }) => {
           id={id}
         />
         <ObjectNumberInput
-          labelText="Employer review (stars):"
-          placeholder={"Employer Review"}
-          min={0}
-          max={5}
+          placeholder={"12000"}
+          labelText={"Maximum budget (cents):"}
           value={job}
+          min={0}
           setValue={setJob}
-          field={"employerReview"}
+          field={"full_price"}
           isLoading={false}
           isRequired={true}
           id={id}
         />
+
         <ObjectNumberInput
           placeholder={"Hours per week"}
           labelText="Hours per week:"
           value={job}
           setValue={setJob}
-          field={"hoursPerWeek"}
+          field={"hours_per_week"}
           isLoading={false}
           isRequired={true}
           id={id}
           min={0}
           max={168}
-        />
-        <ObjectNumberInput
-          placeholder={"Number of proposals"}
-          labelText="Number of proposals:"
-          value={job}
-          setValue={setJob}
-          field={"noProposals"}
-          isLoading={false}
-          isRequired={true}
-          min={0}
-          id={id}
         />
         <div className="w-3/4">
           {job?.skills.map((skill, index) => (

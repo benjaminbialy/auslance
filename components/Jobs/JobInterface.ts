@@ -6,9 +6,9 @@ import {
 } from "../../globalTypes/databaseTypes";
 
 export default interface JobInterface {
-  jobID?: number;
-  employerID?: string;
-  freelancerID?: string;
+  job_id?: number;
+  employer_id?: string;
+  freelancer_id?: string;
   area: Area;
   length: JobLength;
   remote_level: RemoteLevel;
@@ -21,6 +21,6 @@ export default interface JobInterface {
   skills: Array<string>;
   hours_per_week: number;
   time_posted?: number;
-  no_proposals: number;
+  no_proposals?: number;
   status: JobStatus;
 }

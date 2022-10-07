@@ -7,11 +7,10 @@ import JobInterface from "../components/Jobs/JobInterface";
 
 export const defaultJob: JobInterface = {
   title: "",
-  location: "",
+  location: "melbourne",
   description: "",
   skills: [],
   hours_per_week: 0,
-  no_proposals: 0,
   area: "sales",
   length: JobLength.short,
   remote_level: RemoteLevel.none,
