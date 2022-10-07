@@ -34,14 +34,14 @@ export const ObjectNumberInput: FC<Props> = ({
         id={`${field}-${id}`}
         type={"number"}
         placeholder={placeholder}
-        value={value[field]}
+        value={value[field]?.toString()}
         min={min}
         max={max}
         step={step}
         required={isRequired}
         disabled={isLoading}
         onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          setValue((prev) => ({ ...prev, [field]: e.target.value }))
+          setValue((prev) => ({ ...prev, [field]: parseInt(e.target.value) }))
         }
       />
     </>
