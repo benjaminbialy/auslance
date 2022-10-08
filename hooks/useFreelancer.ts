@@ -14,16 +14,21 @@ export const useFreelancer = (freelancer_id: number) => {
   useEffect(() => {
     const handleLoad = async () => {
       if (freelancer_id) {
-        const { data, error } = await read(
-          "freelancers",
-          "*, users(first_name,last_name,email), proposals(*, jobs(*)), jobs(*)",
-          {
-            column: "freelancer_id",
-            value: freelancer_id.toString(),
-          }
-        );
-        if (error) return setError({ error: true, message: error.message });
-        setFreelancer({ ...data[0] });
+        try {
+          const { data } = await read(
+            "freelancers",
+            "*, users(first_name,last_name,email), proposals(*, jobs(*, employers(name))), jobs(*)",
+            {
+              column: "freelancer_id",
+              value: freelancer_id.toString(),
+            }
+          );
+          setFreelancer({ ...data[0] });
+        } catch (error) {
+          setError({ error: true, message: error.message });
+        } finally {
+          setIsLoading(false);
+        }
       }
     };
     handleLoad();
