@@ -10,7 +10,7 @@ interface Props {
 
 export const JobsContainer: FC<Props> = ({ jobs, user }) => {
   const [isLoading, setIsLoading] = useState(false);
-  console.log(user);
+  console.log(jobs);
 
   return <Jobs {...{ jobs, user, isLoading }} />;
 };

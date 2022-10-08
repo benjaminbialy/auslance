@@ -1,10 +1,10 @@
 import React, { FC } from "react";
 import { UserData } from "../../lib/supabase/getUserData";
-import JobFilters from "./JobFilters";
+import { JobFilters } from "./JobFilters";
 import JobInterface from "./JobInterface";
-import JobScroller from "./JobScroller";
-import JobSideBar from "./JobSideBar";
-import JobsNav from "./JobsNav";
+import { JobScroller } from "./JobScroller";
+import { JobSideBar } from "./JobSideBar";
+import { JobsNav } from "./JobsNav";
 
 interface Props {
   isLoading: boolean;
