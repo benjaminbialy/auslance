@@ -19,7 +19,7 @@ export default index;
 export async function getServerSideProps({ req, res }) {
   const { user } = await supabase.auth.api.getUserByCookie(req, res);
   if (user) {
-    return handleJobs(user);
+    return handleJobs(user, { column: "job_id", order: { nullsFirst: true } });
   }
   return { props: {}, redirect: { destination: "/login", permanent: false } };
 }

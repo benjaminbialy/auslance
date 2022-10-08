@@ -3,7 +3,13 @@ import { User } from "@supabase/supabase-js";
 import { UserData } from "../../lib/supabase/getUserData";
 import { getSupabaseServer } from "../../lib/supabase/supabaseServer";
 
-export const handleJobs = async (user: User) => {
+export const handleJobs = async (
+  user: User,
+  ordering?: {
+    column: string;
+    order: { ascending: boolean } | { nullsFirst: true };
+  }
+) => {
   const { data, error } = await getSupabaseServer()
     .from("users")
     .select()
@@ -16,7 +22,12 @@ export const handleJobs = async (user: User) => {
     return handleRedirects(userData);
   }
 
-  const jobs = await getSupabaseServer().from("jobs").select().limit(20);
+  const jobs = await getSupabaseServer()
+    .from("jobs")
+    .select()
+    .order(ordering.column, ordering.order)
+    .limit(20);
+  console.log(jobs);
   if (jobs.error) return { props: { user: userData, jobs: [] } };
 
   return { props: { user: userData, jobs: jobs.data } };
