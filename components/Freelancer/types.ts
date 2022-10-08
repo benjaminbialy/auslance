@@ -4,6 +4,8 @@ import {
   Visibility,
 } from "../../globalTypes/databaseTypes";
 import { UserData } from "../../lib/supabase/getUserData";
+import JobInterface from "../Jobs/JobInterface";
+import { Proposal } from "../Proposal/types";
 
 export interface FreelancerInterface {
   freelancer_id?: number;
@@ -22,4 +24,6 @@ export interface FreelancerInterface {
   time_available: number;
   website?: string;
   users?: Pick<UserData, "first_name" | "last_name" | "email">;
+  jobs?: JobInterface[];
+  proposals?: Proposal[];
 }
