@@ -1,7 +1,7 @@
-import React from "react";
+import React, { FC } from "react";
 import JobsNavItem from "./JobsNavItem";
 
-function JobsNav() {
+export const JobsNav: FC = () => {
   return (
     <div className="flex">
       <JobsNavItem href={"/jobs"} text={"My Jobs"} />
@@ -9,6 +9,4 @@ function JobsNav() {
       <JobsNavItem href={"/jobs/recent"} text={"Recent"} />
     </div>
   );
-}
-
-export default JobsNav;
+};

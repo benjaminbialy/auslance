@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, FC } from "react";
 
-function JobFilters({ savedFilters }) {
+interface Props {
+  savedFilters: JobFilter[];
+}
+
+export const JobFilters: FC<Props> = ({ savedFilters }) => {
   const [filterID, setFilterID] = useState(-1);
   return (
     <div>
-      {savedFilters.map((filter: JobFilterInterface) => (
+      {savedFilters.map((filter: JobFilter) => (
         <div
+          key={`filter-${filter.id}`}
           className={filterID == filter.id ? "text-green-400" : "text-red-400"}
           onClick={() => setFilterID(filter.id)}
         >
@@ -23,11 +28,9 @@ function JobFilters({ savedFilters }) {
       )}
     </div>
   );
-}
+};
 
-export default JobFilters;
-
-interface JobFilterInterface {
+interface JobFilter {
   id: number;
   name: string;
   location?: string;

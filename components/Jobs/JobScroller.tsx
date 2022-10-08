@@ -1,15 +1,17 @@
-import React from "react";
-import Job from "./Job";
+import React, { FC } from "react";
 import JobInterface from "./JobInterface";
+import { JobPreview } from "./JobPreview";
 
-function JobScroller({ jobs }) {
+interface Props {
+  jobs: JobInterface[];
+}
+
+export const JobScroller: FC<Props> = ({ jobs }) => {
   return (
     <div>
       {jobs.map((job: JobInterface) => (
-        <Job key={"job-" + job.id} job={job} />
+        <JobPreview key={"job-" + job.job_id} job={job} />
       ))}
     </div>
   );
-}
-
-export default JobScroller;
+};

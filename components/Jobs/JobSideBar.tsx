@@ -1,7 +1,5 @@
-import React from "react";
+import React, { FC } from "react";
 
-function JobSideBar() {
+export const JobSideBar: FC = () => {
   return <div className="left-0 absolute h-screen">JobSideBar</div>;
-}
-
-export default JobSideBar;
+};
