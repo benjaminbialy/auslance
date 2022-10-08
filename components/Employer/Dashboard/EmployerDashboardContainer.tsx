@@ -3,7 +3,7 @@ import { useEmployer } from "../../../hooks/useEmployer";
 import { EmployerDashboard } from "./EmployerDashboard";
 
 interface Props {
-  employer_id: string;
+  employer_id: number;
 }
 
 const EmployerDashboardContainer: FC<Props> = ({ employer_id }) => {

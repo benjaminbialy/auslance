@@ -4,7 +4,7 @@ import { Error } from "../globalTypes/error";
 import { EmployerInterface } from "../components/Employer/types";
 import { defaultEmployer } from "../components/Employer/defaultEmployer";
 
-export const useEmployer = (employer_id: string) => {
+export const useEmployer = (employer_id: number) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error>({ error: false, message: "" });
   const [employer, setEmployer] = useState<EmployerInterface>(defaultEmployer);
@@ -19,7 +19,7 @@ export const useEmployer = (employer_id: string) => {
             "*, users(first_name,last_name,email), jobs(*)",
             {
               column: "employer_id",
-              value: employer_id,
+              value: employer_id.toString(),
             }
           );
 
