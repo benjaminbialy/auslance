@@ -1,4 +1,5 @@
 import { ProposalStatus } from "../../globalTypes/databaseTypes";
+import JobInterface from "../Jobs/JobInterface";
 
 export interface Proposal {
   proposal_id?: number;
@@ -12,4 +13,5 @@ export interface Proposal {
   full_price: number;
   time_sent?: number;
   was_edited?: boolean;
+  jobs?: JobInterface;
 }
