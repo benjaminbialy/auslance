@@ -6,6 +6,7 @@ interface Props {
 }
 
 export const Freelancer: FC<Props> = ({ freelancer }) => {
+  console.log(freelancer);
   // not found
   // error
   // loading
@@ -16,17 +17,17 @@ export const Freelancer: FC<Props> = ({ freelancer }) => {
         <div>
           {`${freelancer.users.first_name} ${freelancer.users.last_name}`}
         </div>
-        <div>{`Area: ${freelancer.areaOfWork}`}</div>
+        <div>{`Area: ${freelancer.area_of_work}`}</div>
         <div>{`Bio: ${freelancer.bio}`}</div>
-        <div>{`Expertise: ${freelancer.expertiseLevel}`}</div>
-        <div>{`GitHub: ${freelancer.gitHub}`}</div>
+        <div>{`Expertise: ${freelancer.expertise_level}`}</div>
+        <div>{`GitHub: ${freelancer.github}`}</div>
         <div>{`Headline: ${freelancer.headline}`}</div>
-        <div>{`Hourly Rate: ${freelancer.hourlyRate}`}</div>
-        <div>{`LinkedIn: ${freelancer.linkedIn}`}</div>
+        <div>{`Hourly Rate: ${freelancer.hourly_rate}`}</div>
+        <div>{`LinkedIn: ${freelancer.linkedin}`}</div>
         <div>{`Location: ${freelancer.location}`}</div>
-        <div>{`Time available: ${freelancer.timeAvailable}`}</div>
+        <div>{`Time available: ${freelancer.time_available}`}</div>
         <div>{`Timezone: ${freelancer.timezone}`}</div>
-        <div>{`YOE: ${freelancer.yearsOfExperience}`}</div>
+        <div>{`YOE: ${freelancer.years_of_experience}`}</div>
         <div>{`Website: ${freelancer.website}`}</div>
         <div>{`Area: ${freelancer.visibility}`}</div>
       </div>

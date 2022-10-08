@@ -7,19 +7,19 @@ import { UserData } from "../../lib/supabase/getUserData";
 
 export interface FreelancerInterface {
   freelancer_id?: number;
-  hourlyRate: number;
+  hourly_rate: number;
   bio: string;
   headline: string;
   location: string;
   timezone: string;
-  linkedIn?: string;
-  gitHub?: string;
-  yearsOfExperience: number;
-  expertiseLevel: ExpertiseLevel;
+  linkedin?: string;
+  github?: string;
+  years_of_experience: number;
+  expertise_level: ExpertiseLevel;
   skills: string[];
-  areaOfWork: Area;
+  area_of_work: Area;
   visibility: Visibility;
-  timeAvailable: number;
+  time_available: number;
   website?: string;
   users?: Pick<UserData, "first_name" | "last_name" | "email">;
 }

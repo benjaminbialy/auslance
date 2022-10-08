@@ -2,19 +2,19 @@ import { ExpertiseLevel, Visibility } from "../../globalTypes/databaseTypes";
 import { FreelancerInterface } from "./types";
 
 export const defaultFreelancer: FreelancerInterface = {
-  hourlyRate: 0,
+  hourly_rate: 0,
   bio: "",
   headline: "",
   location: "",
   timezone: "",
-  linkedIn: "",
-  gitHub: "",
-  yearsOfExperience: 0,
-  expertiseLevel: ExpertiseLevel.beginner,
+  linkedin: "",
+  github: "",
+  years_of_experience: 0,
+  expertise_level: ExpertiseLevel.beginner,
   skills: [""],
-  areaOfWork: "engineering",
+  area_of_work: "engineering",
   visibility: Visibility.public,
-  timeAvailable: 0,
+  time_available: 0,
   website: "",
   users: {
     first_name: "",

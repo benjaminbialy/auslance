@@ -1,6 +1,4 @@
-import { useRouter } from "next/router";
-import React, { FC, useState } from "react";
-import { useFreelancer } from "../../hooks/useFreelancer";
+import React, { FC } from "react";
 import { Freelancer } from "./Freelancer";
 import { FreelancerInterface } from "./types";
 
