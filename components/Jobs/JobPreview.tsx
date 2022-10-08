@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { FC } from "react";
 import JobInterface from "./JobInterface";
 
@@ -8,7 +9,9 @@ interface Props {
 export const JobPreview: FC<Props> = ({ job }) => {
   return (
     <div className="border-2 border-gray-300 rounded-2xl">
-      <div className="text-red-500">{job.job_id}</div>
+      <Link href={`jobs/${job.job_id}`}>
+        <a className="text-red-500">{job.job_id}</a>
+      </Link>
       <div>{job.title}</div>
       <div>{job.location}</div>
       <div>{job.description}</div>

@@ -1,13 +1,14 @@
-import React, { FC } from "react";
-import JobInterface from "./JobInterface";
+import React, { Dispatch, FC, SetStateAction } from "react";
+import JobInterface from "../JobInterface";
 
 interface Props {
+  isLoading: boolean;
   job: JobInterface;
 }
 
-const Job: FC<Props> = ({ job }) => {
+export const JobContent: FC<Props> = ({ isLoading, job }) => {
   return (
-    <div className="border-2 border-gray-300 rounded-2xl">
+    <div>
       <div className="text-red-500">{job.job_id}</div>
       <div>{job.title}</div>
       <div>{job.location}</div>
@@ -23,5 +24,3 @@ const Job: FC<Props> = ({ job }) => {
     </div>
   );
 };
-
-export default Job;
