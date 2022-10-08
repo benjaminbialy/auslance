@@ -4,7 +4,7 @@ import { defaultFreelancer } from "../components/Freelancer/defaultFreelancer";
 import { FreelancerInterface } from "../components/Freelancer/types";
 import { Error } from "../globalTypes/error";
 
-export const useFreelancer = (freelancer_id: string) => {
+export const useFreelancer = (freelancer_id: number) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error>({ error: false, message: "" });
   const [freelancer, setFreelancer] =
@@ -16,10 +16,10 @@ export const useFreelancer = (freelancer_id: string) => {
       if (freelancer_id) {
         const { data, error } = await read(
           "freelancers",
-          "*, users(first_name,last_name,email)",
+          "*, users(first_name,last_name,email), proposals(*, jobs(*)), jobs(*)",
           {
             column: "freelancer_id",
-            value: freelancer_id as string,
+            value: freelancer_id.toString(),
           }
         );
         if (error) return setError({ error: true, message: error.message });
