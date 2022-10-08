@@ -72,7 +72,7 @@ The problem here though, came with Postgres. Postgres doesn't allow for capitlis
 
 That's all fine though, the problem here is that I want type safety as well as minimising semi-duplicate code and unnessecary lines.
 
-This came with my form handlers, where when creating a job for example, with 10 or so fields, I wanted to be able to simply use some object destructuring to be able to populate all of the fields that my database for a row in the jobs table.
+This came with my form handlers, where when creating a job for example, with 10 or so fields, I wanted to be able to simply use some object destructuring to be able to populate all of the fields that my database expects for a row in the jobs table.
 
 This wasn't an isolated issue to just the jobs table either though, it's present on everything that saves to the database. I also wanted the benefit of destructuring so that I could simply destructure from a database read without having to reassign every column to a new object property.
 
