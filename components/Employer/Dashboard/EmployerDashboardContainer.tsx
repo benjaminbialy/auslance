@@ -1,13 +1,15 @@
 import React, { FC } from "react";
-import { EmployerInterface } from "../types";
+import { useEmployer } from "../../../hooks/useEmployer";
+import { EmployerDashboard } from "./EmployerDashboard";
 
 interface Props {
-  employer: EmployerInterface;
+  employer_id: string;
 }
 
-const EmployerDashboardContainer: FC<Props> = ({ employer }) => {
-  console.log(employer);
-  return <div>EmployerDashboardContainer</div>;
+const EmployerDashboardContainer: FC<Props> = ({ employer_id }) => {
+  const { employer, error, isLoading } = useEmployer(employer_id);
+
+  return <EmployerDashboard {...{ isLoading, error, employer }} />;
 };
 
 export default EmployerDashboardContainer;

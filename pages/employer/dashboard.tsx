@@ -8,8 +8,8 @@ interface Props {
   employer: EmployerInterface;
 }
 
-const dashboard: FC<Props> = ({ employer }) => {
-  return <EmployerDashboardContainer {...{ employer }} />;
+const dashboard: FC<Props> = ({ employer: employerData }) => {
+  return <EmployerDashboardContainer employer_id={employerData.employer_id} />;
 };
 
 export default dashboard;
@@ -20,7 +20,7 @@ export async function getServerSideProps({ req, res }) {
     return handleIsEmployer(user);
   }
   return {
-    props: { employer: user },
+    props: { user },
     redirect: { destination: "/login", permanent: false },
   };
 }
