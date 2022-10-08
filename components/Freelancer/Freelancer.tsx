@@ -29,7 +29,7 @@ export const Freelancer: FC<Props> = ({ freelancer }) => {
         <div>{`Timezone: ${freelancer.timezone}`}</div>
         <div>{`YOE: ${freelancer.years_of_experience}`}</div>
         <div>{`Website: ${freelancer.website}`}</div>
-        <div>{`Area: ${freelancer.visibility}`}</div>
+        <div>{`Visibility: ${freelancer.visibility}`}</div>
       </div>
       <div>content</div>
       <div>bottom</div>
