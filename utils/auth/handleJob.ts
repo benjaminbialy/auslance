@@ -6,7 +6,7 @@ import { getSupabaseServer } from "../../lib/supabase/supabaseServer";
 export const handleJob = async (user: User, job_id: number) => {
   const { data, error } = await getSupabaseServer()
     .from("users")
-    .select()
+    .select("*, freelancers(*), employers(*)")
     .eq("user_id", user.id);
 
   if (error) console.error(error);
