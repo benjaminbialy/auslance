@@ -50,13 +50,12 @@ They're also nice for creating onSubmit handler functions for forms, which can g
 
 **Is a generic Input component too reusable?**
 
-It's a pattern I've used on numerous projects that works well, for example, ObjectTextInput:
-
-It takes in the following props (amongst others):
+It's a pattern I've used on numerous projects that works well, for example, ObjectTextInput which takes in the following props (amongst others):
 
 - value (Object),
 - setValue (Dispatch<SetStateAction<Object>>)
 - field (string)
+-
 
 This is useful anytime you want to have an input for a piece of state that's an object such as a freelancer.
 
