@@ -24,7 +24,7 @@ export const handleJobs = async (
 
   const jobs = await getSupabaseServer()
     .from("jobs")
-    .select()
+    .select(`*, employers(*)`)
     .order(ordering.column, ordering.order)
     .limit(20);
   console.log(jobs);

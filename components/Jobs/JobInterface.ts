@@ -4,6 +4,7 @@ import {
   JobStatus,
   RemoteLevel,
 } from "../../globalTypes/databaseTypes";
+import { EmployerInterface } from "../Employer/types";
 
 export default interface JobInterface {
   job_id?: number;
@@ -23,4 +24,5 @@ export default interface JobInterface {
   time_posted?: number;
   no_proposals?: number;
   status: JobStatus;
+  employers?: EmployerInterface;
 }
