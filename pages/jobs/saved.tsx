@@ -1,5 +1,5 @@
 import React from "react";
-import JobContainer from "../../components/Jobs/JobContainer";
+import JobContainer from "../../components/Jobs/JobsContainer";
 import { supabase } from "../../lib/supabase/supabaseClient";
 import { handleNotOnboarded } from "../../utils/auth/handleNotOnboarded";
 
