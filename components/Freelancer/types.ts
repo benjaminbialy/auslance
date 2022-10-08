@@ -6,7 +6,7 @@ import {
 import { UserData } from "../../lib/supabase/getUserData";
 
 export interface FreelancerInterface {
-  freelancer_id: string;
+  freelancer_id?: number;
   hourlyRate: number;
   bio: string;
   headline: string;

@@ -2,7 +2,7 @@ import { UserData } from "../../lib/supabase/getUserData";
 import JobInterface from "../Jobs/JobInterface";
 
 export interface EmployerInterface {
-  employer_id: string;
+  employer_id?: number;
   user_id: string;
   hourly_budget: number;
   bio: string;

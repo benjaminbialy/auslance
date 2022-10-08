@@ -8,8 +8,8 @@ import { EmployerInterface } from "../Employer/types";
 
 export default interface JobInterface {
   job_id?: number;
-  employer_id?: string;
-  freelancer_id?: string;
+  employer_id?: number;
+  freelancer_id?: number;
   area: Area;
   length: JobLength;
   remote_level: RemoteLevel;
