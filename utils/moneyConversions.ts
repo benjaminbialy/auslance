@@ -1,3 +1,5 @@
+const DOLLARS_TO_CENTS = 100;
+
 export const centsToDollars = (cents: number) => {
-  return (cents * 100).toFixed(2);
+  return (cents / DOLLARS_TO_CENTS).toFixed(2);
 };
