@@ -48,20 +48,19 @@ Without containers, there'd be some clutter from a useDatabase() hook and a useF
 
 They're also nice for creating onSubmit handler functions for forms, which can get messy if placed with a bunch of other presentational component logic.
 
-**Is a generic Input component too reusable?**
-
-It's a pattern I've used on numerous projects that works well, for example, ObjectTextInput which takes in the following props (amongst others):
-
-- value (Object),
-- setValue (Dispatch<SetStateAction<Object>>)
-- field (string)
--
-
 This is useful anytime you want to have an input for a piece of state that's an object such as a freelancer.
 
 The problem comes when you chuck a label in there too, which has it's own set of props and then the component will end up taking 12 lines up in a file.
 
 You'll probably have 5 of these on the average form, which really adds up. I'm still running with these though but am on the lookout for better alternatives.
+
+**Is a generic Input component too reusable?**
+
+It's a pattern I've used on numerous projects that works well, for example, ObjectTextInput which takes in the following props (amongst others):
+
+- value (`Object`)
+- setValue(`Dispatch<SetStateAction<Object>>`)
+- field (`string`)
 
 **Is it fine to use snake_case as well as camelCase?**
 
