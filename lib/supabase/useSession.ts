@@ -5,6 +5,7 @@ import axios from "axios";
 export const useSession = () => {
   const [session, setSession] = useState(null);
   const [loading, setLoading] = useState(true);
+  console.log(supabase.auth.session());
 
   useEffect(() => {
     let mounted = true;
@@ -23,12 +24,12 @@ export const useSession = () => {
     getInitialSession();
 
     supabase.auth.onAuthStateChange(async (_event, session) => {
-      console.log("change");
       setSession(session);
-      await axios.post("/api/setAuthCookie", {
+      const res = await axios.post("/api/setAuthCookie", {
         event: _event,
         session: session,
       });
+      console.log(res);
     });
   }, []);
 
