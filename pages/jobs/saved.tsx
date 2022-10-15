@@ -1,18 +1,26 @@
+import { NextPage } from "next";
 import React from "react";
-import JobContainer from "../../components/Jobs/JobsContainer";
+import JobInterface from "../../components/Jobs/JobInterface";
+import { JobsContainer } from "../../components/Jobs/JobsContainer";
+import { UserData } from "../../lib/supabase/getUserData";
 import { supabase } from "../../lib/supabase/supabaseClient";
-import { handleNotOnboarded } from "../../utils/auth/handleNotOnboarded";
+import { handleJobs } from "../../utils/auth/handleJobs";
 
-function saved() {
-  return <JobContainer />;
+interface Props {
+  user: UserData;
+  jobs: JobInterface[];
 }
+
+const saved: NextPage<Props> = ({ jobs, user }) => {
+  return <JobsContainer {...{ jobs, user }} />;
+};
 
 export default saved;
 
 export async function getServerSideProps({ req, res }) {
   const { user } = await supabase.auth.api.getUserByCookie(req, res);
   if (user) {
-    return handleNotOnboarded(user);
+    return handleJobs(user, { column: "job_id", order: { nullsFirst: true } });
   }
   return { props: {}, redirect: { destination: "/login", permanent: false } };
 }
