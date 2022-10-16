@@ -1,12 +1,22 @@
-import React from "react";
+import React, { FC } from "react";
 import Link from "../../node_modules/next/link";
 
-function JobsNavItem({ href, text }) {
-  return (
-    <Link href={href}>
-      <a className={""}>{text}</a>
-    </Link>
-  );
+interface Props {
+  href: string;
+  text: string;
+  isThisPage: boolean;
 }
 
-export default JobsNavItem;
+export const JobsNavItem: FC<Props> = ({ href, text, isThisPage }) => {
+  return (
+    <Link href={href}>
+      <a
+        className={`text-lg mr-4 py-2 border-b-4 ${
+          isThisPage ? "border-b-emerald-500" : "border-b-white"
+        }`}
+      >
+        {text}
+      </a>
+    </Link>
+  );
+};
