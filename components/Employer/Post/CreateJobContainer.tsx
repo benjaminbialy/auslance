@@ -3,6 +3,7 @@ import React, { FormEvent, useId, useState } from "react";
 import { defaultJob } from "../../../defaultValues/defaultJob";
 import { JobStatus } from "../../../globalTypes/databaseTypes";
 import { useDatabase } from "../../../lib/supabase/useDatabase";
+import { getEpochSecondsNow } from "../../../utils/getEpochSecondsNow";
 import JobInterface from "../../Jobs/JobInterface";
 import CreateJob from "./CreateJob";
 
@@ -19,7 +20,7 @@ function CreateJobContainer({ employer }) {
         employer_id: employer.employer_id,
         status: JobStatus.posted,
         ...job,
-        time_posted: Date.now(),
+        time_posted: getEpochSecondsNow(),
       };
       const wasSuccessful = await write("jobs", jobEntry);
       if (wasSuccessful) Router.push("/employer/dashboard");
