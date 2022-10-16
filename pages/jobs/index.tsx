@@ -1,3 +1,4 @@
+import { NextPage } from "next";
 import React, { FC } from "react";
 import JobInterface from "../../components/Jobs/JobInterface";
 import { JobsContainer } from "../../components/Jobs/JobsContainer";
@@ -10,7 +11,7 @@ interface Props {
   jobs: JobInterface[];
 }
 
-const index: FC<Props> = ({ jobs, user }) => {
+const index: NextPage<Props> = ({ jobs, user }) => {
   return <JobsContainer {...{ jobs, user }} />;
 };
 

@@ -15,6 +15,6 @@ export const lengthOfJobOptions: SelectOption[] = [
   {
     id: "jobLength-option-long",
     value: JobLength.long,
-    label: "Medium term (> 3 months)",
+    label: "Long term (> 3 months)",
   },
 ];

@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import NavBar from "../components/NavBar";
+import { NavBar } from "../components/NavBar";
 import { AppProps } from "../node_modules/next/app";
 import { useSession } from "../lib/supabase/useSession";
 
