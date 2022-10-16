@@ -7,7 +7,7 @@ interface Props {
 export const JobFilters: FC<Props> = ({ savedFilters }) => {
   const [filterID, setFilterID] = useState(-1);
   return (
-    <div>
+    <div className="h-36 my-8 bg-slate-200">
       {savedFilters.map((filter: JobFilter) => (
         <div
           key={`filter-${filter.id}`}
