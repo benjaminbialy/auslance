@@ -5,6 +5,7 @@ import {
 } from "../../globalTypes/databaseTypes";
 import { UserData } from "../../lib/supabase/getUserData";
 import JobInterface from "../Jobs/JobInterface";
+import { SavedJob } from "../Jobs/types";
 import { Proposal } from "../Proposal/types";
 
 export interface FreelancerInterface {
@@ -26,4 +27,5 @@ export interface FreelancerInterface {
   users?: Pick<UserData, "first_name" | "last_name" | "email">;
   jobs?: JobInterface[];
   proposals?: Proposal[];
+  saved_jobs?: SavedJob[];
 }

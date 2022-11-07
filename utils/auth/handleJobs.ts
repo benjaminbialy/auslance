@@ -12,7 +12,7 @@ export const handleJobs = async (
 ) => {
   const { data, error } = await getSupabaseServer()
     .from("users")
-    .select()
+    .select("*, employers(*), freelancers(*, saved_jobs(*))")
     .eq("user_id", user.id);
 
   if (error) console.error(error);
