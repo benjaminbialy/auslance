@@ -1,4 +1,4 @@
-import { RemoteLevel } from "../globalTypes/databaseTypes";
+import { RemoteLevel } from "../../globalTypes/databaseTypes";
 
 export const getJobRemoteLevelMessage = (remoteLevel: string) => {
   if (remoteLevel === RemoteLevel.none) {
