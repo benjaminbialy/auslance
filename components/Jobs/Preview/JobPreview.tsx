@@ -6,13 +6,14 @@ import { JobPreviewTopLine } from "./JobPreviewTopLine";
 import { JobPreviewKeyDetails } from "./JobPreviewKeyDetails";
 import { JobPreviewSkillsScroller } from "./JobPreviewSkillsScroller";
 import { JobPreviewRemoteLevel } from "./JobPreviewRemoteLevel";
-import { SavedJobsMap } from "../types";
+import { ProposedJobsMap, SavedJobsMap } from "../types";
 
 interface Props {
   job: JobInterface;
   user: UserData;
   savedJobsMap: SavedJobsMap;
   setSavedJobsMap: Dispatch<SetStateAction<SavedJobsMap>>;
+  proposedJobsMap: ProposedJobsMap;
 }
 
 export const JobPreview: FC<Props> = ({
@@ -20,6 +21,7 @@ export const JobPreview: FC<Props> = ({
   user,
   savedJobsMap,
   setSavedJobsMap,
+  proposedJobsMap,
 }) => {
   const {
     job_id: jobID,
@@ -41,6 +43,7 @@ export const JobPreview: FC<Props> = ({
           freelancers,
           setSavedJobsMap,
           savedJobsMap,
+          proposedJobsMap,
         }}
       />
       <div>{employers.name + ", " + capitaliseFirstLetter(location)}</div>

@@ -12,8 +12,8 @@ export const handleJobs = async (
 ) => {
   const { data, error } = await getSupabaseServer()
     .from("users")
-    .select("*, employers(*), freelancers(*, saved_jobs(*))")
-    .eq("user_id", user.id);
+    .select("*, employers(*), freelancers(*, saved_jobs(*), proposals(*))")
+    .match({ user_id: user.id, "freelancers.proposals.proposal": "sent" });
 
   if (error) console.error(error);
 

@@ -8,3 +8,7 @@ export interface SavedJob {
 export interface SavedJobsMap {
   [job_id: number]: true;
 }
+
+export interface ProposedJobsMap {
+  [job_id: number]: number;
+}

@@ -6,7 +6,7 @@ import JobInterface from "./JobInterface";
 import { JobScroller } from "./JobScroller";
 import { JobSideBar } from "./JobSideBar";
 import { JobsNav } from "./JobsNav";
-import { SavedJobsMap } from "./types";
+import { ProposedJobsMap, SavedJobsMap } from "./types";
 
 interface Props {
   isLoading: boolean;
@@ -15,6 +15,7 @@ interface Props {
   pathname: string;
   savedJobsMap: SavedJobsMap;
   setSavedJobsMap: Dispatch<SetStateAction<SavedJobsMap>>;
+  proposedJobsMap: ProposedJobsMap;
 }
 
 export const Jobs: FC<Props> = ({
@@ -24,6 +25,7 @@ export const Jobs: FC<Props> = ({
   pathname,
   savedJobsMap,
   setSavedJobsMap,
+  proposedJobsMap,
 }) => {
   if (isLoading) return <div>Loading...</div>;
   return (
@@ -33,7 +35,9 @@ export const Jobs: FC<Props> = ({
         <h3 className="text-4xl mt-10">Find your next gig</h3>
         <JobsNav {...{ pathname }} />
         <JobFilters savedFilters={[]} />
-        <JobScroller {...{ jobs, user, savedJobsMap, setSavedJobsMap }} />
+        <JobScroller
+          {...{ jobs, user, savedJobsMap, setSavedJobsMap, proposedJobsMap }}
+        />
       </div>
     </div>
   );
