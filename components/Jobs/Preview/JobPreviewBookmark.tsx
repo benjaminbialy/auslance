@@ -26,7 +26,7 @@ export const JobPreviewBookmark: FC<Props> = ({
           if (savedJobsMap[jobID]) {
             const savedJobsMapCopy = savedJobsMap;
             delete savedJobsMapCopy[jobID];
-            setSavedJobsMap(savedJobsMapCopy);
+            setSavedJobsMap({ ...savedJobsMapCopy });
           } else {
             setSavedJobsMap((prev: SavedJobsMap) => ({
               ...prev,

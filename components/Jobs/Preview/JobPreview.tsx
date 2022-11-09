@@ -1,8 +1,5 @@
 import React, { Dispatch, FC, SetStateAction } from "react";
 import { capitaliseFirstLetter } from "../../../utils/capitaliseFirstLetter";
-import { getJobLengthMonths } from "../../../utils/jobs/getJobLengthMonths";
-import { getJobRemoteLevelMessage } from "../../../utils/jobs/getJobRemoteLevelMessage";
-import { FlexWrapper } from "../../Wrappers/FlexWrapper";
 import JobInterface from "../JobInterface";
 import { UserData } from "../../../lib/supabase/getUserData";
 import { JobPreviewTopLine } from "./JobPreviewTopLine";
@@ -14,7 +11,6 @@ import { SavedJobsMap } from "../types";
 interface Props {
   job: JobInterface;
   user: UserData;
-  isSaved: boolean;
   savedJobsMap: SavedJobsMap;
   setSavedJobsMap: Dispatch<SetStateAction<SavedJobsMap>>;
 }
@@ -22,7 +18,6 @@ interface Props {
 export const JobPreview: FC<Props> = ({
   job,
   user,
-  isSaved,
   savedJobsMap,
   setSavedJobsMap,
 }) => {
@@ -44,7 +39,6 @@ export const JobPreview: FC<Props> = ({
           jobID,
           title,
           freelancers,
-          isSaved,
           setSavedJobsMap,
           savedJobsMap,
         }}

@@ -9,7 +9,6 @@ interface Props {
   jobID: number;
   title: string;
   freelancers: FreelancerInterface[];
-  isSaved: boolean;
   savedJobsMap: SavedJobsMap;
   setSavedJobsMap: Dispatch<SetStateAction<SavedJobsMap>>;
 }
@@ -18,11 +17,11 @@ export const JobPreviewTopLine: FC<Props> = ({
   jobID,
   title,
   freelancers,
-  isSaved,
   savedJobsMap,
   setSavedJobsMap,
 }) => {
   const isFreelancer = freelancers?.length > 0;
+  const isSaved = savedJobsMap[jobID] ? true : false;
   return (
     <FlexWrapper flexProps="justify-between items-center">
       <Link href={`jobs/${jobID}`}>

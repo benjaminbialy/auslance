@@ -9,21 +9,16 @@ export const saveJob = async (
 ) => {
   try {
     if (isSaved) {
-      const data = await supabase
+      await supabase
         .from(SAVED_JOBS_TABLE)
         .delete()
         .match({ freelancer_id: freelancer_id, job_id: job_id });
-      console.log(data);
     } else {
-      await supabase
-        .from(SAVED_JOBS_TABLE)
-        .insert({
-          job_id: job_id,
-          freelancer_id: freelancer_id,
-          time_sent: getEpochSecondsNow(),
-          isStillSaved: !isSaved,
-        })
-        .match({ freelancer_id: freelancer_id, job_id: job_id });
+      await supabase.from(SAVED_JOBS_TABLE).insert({
+        job_id: job_id,
+        freelancer_id: freelancer_id,
+        time_sent: getEpochSecondsNow(),
+      });
     }
     return true;
   } catch (error) {

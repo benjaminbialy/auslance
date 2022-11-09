@@ -20,11 +20,10 @@ export const JobScroller: FC<Props> = ({
   return (
     <div>
       {jobs.map((job: JobInterface) => {
-        const isSaved = savedJobsMap[job.job_id] ? true : false;
         return (
           <JobPreview
             key={"job-" + job.job_id}
-            {...{ job, user, isSaved, setSavedJobsMap, savedJobsMap }}
+            {...{ job, user, setSavedJobsMap, savedJobsMap }}
           />
         );
       })}
